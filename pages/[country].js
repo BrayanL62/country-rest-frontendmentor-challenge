@@ -45,9 +45,10 @@ const Country = (props) => {
   const countries = props.countries
   const { darkMode } = useAppContext()
   {/* //* On viens prendre les valeurs situées dans l'objet nativeName et on les stock dans un tableau */}
+  let native_name = []
   if(country.name.nativeName) {
 
-    return native_name = Object.values(country.name.nativeName)[0]
+    native_name = Object.values(country.name.nativeName)[0]
   }
   {/* //* On initialise un tableau afin de stocker les devises d'un pays. */}
   let currencies_country = []
