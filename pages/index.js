@@ -25,7 +25,6 @@ export const getStaticProps = async () => {
 export default function Home({ countries }) {
   
   const { darkMode } = useAppContext()
-  const { pays, setPays } = useAppContext()
   const { continent, setContinent } = useAppContext()
   const { searching, setSearching } = useAppContext()
   const [sortList, setSortList] = useState(countries)
@@ -55,7 +54,7 @@ export default function Home({ countries }) {
   
   const countriesJSX = sortList.map((country) => {
     return <Link href={`/${country.name.common}`} key={country.name.common}>
-    <a className="w-[264px] h-[326px] rounded-md mx-auto my-10 flex flex-col justify-between bg-white drop-shadow-lg dark:bg-dark-blue-dark-mode">
+    <a className="w-[264px] h-[326px] rounded-md mx-auto my-10 flex flex-col justify-between bg-white drop-shadow-lg dark:bg-dark-blue-dark-mode desktop:m-[35px]">
       <Image 
           src={country.flags.png}
           width={264}
@@ -80,11 +79,13 @@ export default function Home({ countries }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <SearchBar />
-      <SortButton />
+      <div className='tablet:flex tablet:justify-between'>
+        <SearchBar />
+        <SortButton />
+      </div>
       
       {/* // TODO: Ajouter le composant dynamic permettant d'afficher tous les pays de manières "Lazy" */}
-      <main>
+      <main className='tablet:flex tablet:max-w-full tablet:flex-wrap desktop:mx-[50px] desktop:my-7'>
         {countriesJSX}
       </main>
       {/* // TODO : Essayer de faire en sorte que les pays soient dans un composant */}

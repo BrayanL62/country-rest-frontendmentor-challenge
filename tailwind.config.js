@@ -18,6 +18,8 @@ module.exports = {
         'detail-page':        '16px'
       },
       screens: {
+        'tablet': '860px',
+        'lg': '1200px',
         'desktop': '1440px'
       }
     },

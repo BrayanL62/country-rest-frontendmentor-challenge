@@ -18,7 +18,7 @@ const SearchBar = () => {
             event.preventDefault()
             setSearching(event.currentTarget[0].value)
         }} 
-        className='flex w-[343px] h-12 mx-auto my-6 bg-white drop-shadow-md dark:bg-dark-blue-dark-mode'>
+        className='flex w-[343px] tablet:w-[480px] h-12 mx-auto tablet:mx-20 my-6 bg-white drop-shadow-md dark:bg-dark-blue-dark-mode'>
             
             <FontAwesomeIcon onClick={handleSubmit} icon={faMagnifyingGlass} className='w-4 h-4 mx-4 my-auto text-dark-grey-light-mode dark:text-white'/>
             
