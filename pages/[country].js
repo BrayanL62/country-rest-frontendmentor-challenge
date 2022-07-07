@@ -45,7 +45,10 @@ const Country = (props) => {
   const countries = props.countries
   const { darkMode } = useAppContext()
   {/* //* On viens prendre les valeurs situées dans l'objet nativeName et on les stock dans un tableau */}
-  const native_name = Object.values(country.name.nativeName)[0]
+  if(country.name.nativeName) {
+
+    return native_name = Object.values(country.name.nativeName)[0]
+  }
   {/* //* On initialise un tableau afin de stocker les devises d'un pays. */}
   let currencies_country = []
 
@@ -78,8 +81,8 @@ const Country = (props) => {
             <span>Back</span>
           </a>
         </Link>
-        <div className="lg:flex desktop:justify-around lg:m-auto desktop:mt-10 desktop:mx-[80px]">
-          <div className="w-[320px] h-[229px] m-auto relative desktop:w-[560px] desktop:h-[401px]">
+        <div className="lg:flex desktop:justify-around lg:m-auto desktop:mt-10 desktop:mx-[80px] desktop:m-w-[1440px]">
+          <div className="w-[320px] h-[229px] m-auto relative desktop:w-[560px] desktop:h-[401px] desktop:m-0">
             <Image 
               src={country.flags.svg}
               alt={`${country.name.common} flag`}
@@ -91,7 +94,7 @@ const Country = (props) => {
             <p className="mt-10 mb-4 font-extrabold text-[22px] lg:text-3xl desktop:mt-0">{country.name.common}</p>
             <div  className="leading-8 text-sm lg:flex lg:justify-between lg:text-base lg:leading-8">
               <div>
-                <p className="font-semibold">Native Name: <span className="font-light">{native_name.common}</span>
+                <p className="font-semibold">Native Name: <span className="font-light">{ country.name.nativeName ? native_name.common : country.name.common }</span>
                 </p>
                 <p className='font-semibold'>Population: <span className='font-light'>{country.population.toLocaleString("en-US")}</span></p>
                 <p className='font-semibold'>Region: <span className='font-light'>{country.region}</span></p>
