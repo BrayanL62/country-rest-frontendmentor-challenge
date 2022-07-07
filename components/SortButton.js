@@ -10,7 +10,7 @@ const SortButton = () => {
     const [isActive, setIsActive] = useState(false)
 
     return (
-        <div onClick={() => setIsActive(!isActive)} className='mx-4 mt-10 tablet:mt-6 bg-white w-[200px] h-12 rounded-md dark:bg-dark-blue-dark-mode drop-shadow-md relative z-10 tablet:mx-20 tablet:top-1 desktop:text-sm desktop:h-14'>
+        <div onClick={() => setIsActive(!isActive)} className='mx-4 mt-10 tablet:mt-6 bg-white w-[200px] h-12 rounded-md dark:bg-dark-blue-dark-mode drop-shadow-md relative z-10 tablet:mx-20 desktop:text-sm desktop:h-14'>
         <button className="flex w-full h-full m-auto">
           <p 
           className="m-auto text-xs dark:text-white">
