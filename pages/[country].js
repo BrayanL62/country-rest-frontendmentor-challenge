@@ -74,7 +74,7 @@ const Country = (props) => {
   }
 
   return ( 
-      <div className={darkMode ? 'dark text-white h-[985px]' : 'light h-[985px]'}>
+      <div className={darkMode ? 'dark text-white h-[985px] desktop:h-screen' : 'light h-[985px] desktop:h-screen'}>
         <Navbar />
         <Link href="/">
           <a className="flex h-8 w-[104px] tablet:w-[136px] bg-white shadow-lg rounded-sm items-center justify-evenly mx-7 my-10 text-sm dark:bg-dark-blue-dark-mode desktop:mt-20">

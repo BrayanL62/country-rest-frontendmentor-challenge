@@ -10,15 +10,9 @@ body {
   background-color: #FAFAFA;
 }
 
-/* .light, .dark{
-  height: 100vh;
-} */
-
 .dark {
   background-color: #202C36;
 }
-
-
 
 a {
   color: inherit;

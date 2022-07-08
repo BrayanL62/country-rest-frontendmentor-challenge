@@ -1,13 +1,12 @@
 import Head from 'next/head';
-import Image from 'next/image';
+
 import Navbar from '../components/Navbar';
-import Countries from '../components/Countries';
 import { useAppContext } from '../context/state';
 import SearchBar from '../components/SearchBar';
 import SortButton from '../components/SortButton';
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import { Suspense, useEffect, useState } from 'react';
 import axios from 'axios';
+import dynamic from 'next/dynamic';
 
 export const getStaticProps = async () => {
 
@@ -21,15 +20,17 @@ export const getStaticProps = async () => {
   }
 }
 
+const DynamicCountries = dynamic(() => import('../components/Countries'), {
+  suspense: true,
+})
+
 
 export default function Home({ countries }) {
   
   const { darkMode } = useAppContext()
   const { continent, setContinent } = useAppContext()
   const { searching, setSearching } = useAppContext()
-  const [sortList, setSortList] = useState(countries)
-  
-  
+  const [sortList, setSortList] = useState(countries)  
   
   useEffect(() => {
     if(continent != null && searching == "") {
@@ -51,25 +52,6 @@ export default function Home({ countries }) {
 
 
   }, [continent, searching])
-  
-  const countriesJSX = sortList.map((country) => {
-    return <Link href={`/${country.name.common}`} key={country.name.common}>
-    <a className="w-[264px] h-[326px] rounded-md mx-auto my-10 flex flex-col justify-between bg-white drop-shadow-lg dark:bg-dark-blue-dark-mode desktop:m-[35px]">
-      <Image 
-          src={country.flags.png}
-          width={264}
-          height={160}
-          alt={`${country.name.common} flag`}
-      />
-      <p className="my-2 mx-6 font-extrabold text-lg dark:text-white">{country.name.common}</p>
-      <div className='mx-6 mb-10 dark:text-white'>
-          <p className='font-semibold'>Population: <span className='font-light'>{country.population.toLocaleString("en-US")}</span></p>
-          <p className='font-semibold'>Region: <span className='font-light'>{country.region}</span></p>
-          <p className='font-semibold'>Capital: <span className='font-light'>{country.capital}</span></p>
-      </div>
-    </a>
-  </Link>
-  })
 
   return (
     <div className={darkMode ? 'dark' : 'light'}>
@@ -83,13 +65,9 @@ export default function Home({ countries }) {
         <SearchBar />
         <SortButton />
       </div>
-      
-      {/* // TODO: Ajouter le composant dynamic permettant d'afficher tous les pays de manières "Lazy" */}
-      <main className='tablet:flex tablet:max-w-full tablet:flex-wrap desktop:mx-[50px] desktop:my-7'>
-        {countriesJSX}
-      </main>
-      {/* // TODO : Essayer de faire en sorte que les pays soient dans un composant */}
-      {/* <Countries /> */}
+      <Suspense fallback={`Loading...`}>
+        <DynamicCountries countries={sortList} />
+      </Suspense>
     </div>
   )
 }

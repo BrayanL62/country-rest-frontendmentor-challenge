@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const SortButton = () => {
 
-    let { continent, setContinent } = useAppContext()
+    let { setContinent } = useAppContext()
     const [isActive, setIsActive] = useState(false)
 
     return (

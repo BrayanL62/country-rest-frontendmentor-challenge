@@ -1,5 +1,4 @@
 // src/context/state.js
-import App from 'next/app';
 import { createContext, useContext, useMemo, useState } from 'react';
 
 const AppContext = createContext();

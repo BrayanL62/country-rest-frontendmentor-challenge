@@ -5,7 +5,7 @@ import { useAppContext } from '../context/state';
 const SearchBar = () => {
 
     
-    let { searching, setSearching } = useAppContext()
+    let { setSearching } = useAppContext()
 
     const handleSubmit = (event) => {
         setSearching(event.currentTarget.nextSibling.value)

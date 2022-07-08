@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon as faSolidMoon } from '@fortawesome/free-solid-svg-icons';
 import { faMoon as faRegularMoon } from '@fortawesome/free-regular-svg-icons'
-import { useAppContext, useState } from '../context/state';
+import { useAppContext } from '../context/state';
 import Link from 'next/link';
 
 const Navbar = () => {
