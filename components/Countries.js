@@ -23,7 +23,7 @@ const Countries = ({countries}) => {
       })
     
     return (
-        <main className="tablet:flex tablet:w-screen tablet:flex-wrap desktop:mx-[50px] desktop:my-7">
+        <main className="tablet:flex tablet:w-screen tablet:flex-wrap desktop:mx-[50px]">
             {countriesJSX}
         </main>
     );
